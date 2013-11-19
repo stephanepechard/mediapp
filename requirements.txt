@@ -1,0 +1,4 @@
+celery
+subliminal
+watchdog
+kaa-metadata
