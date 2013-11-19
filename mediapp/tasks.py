@@ -11,7 +11,7 @@ import subliminal
 # libs
 import libs.kaa_metadata as kaa_metadata
 # local
-from conf import LOG, BABELFISH_LANGUAGES
+from conf import LOG, BABELFISH_LANG
 from settings import MEDIA_DIR, MEDIA_DIR_RECURSIVE
 
 
@@ -42,7 +42,7 @@ def list_media_dir(mediadir, recursive=True):
 def list_medias(recursive=True):
     LOG.info("Listing medias:")
     media_list = list_media_dir(MEDIA_DIR, recursive)
-    LOG.info("{} movies found".format(len(media_list)))
+    LOG.info("{} video files found".format(len(media_list)))
     return(media_list)
 
 
@@ -54,8 +54,9 @@ def find_sub_file(media_path):
         sub_path = os.path.join(media_dir, sub)
         if sub_path != media_path and os.path.isfile(sub_path):
             sub_name, sub_ext = os.path.splitext(sub)
-            if sub_name == media_name and sub_ext in subliminal.video.SUBTITLE_EXTENSIONS:
-                found = True
+            if sub_name.startswith(media_name) and \
+                sub_ext in subliminal.video.SUBTITLE_EXTENSIONS:
+                    found = True
 
     return(found)
 
@@ -76,14 +77,16 @@ def fetch_subtitle(no_subs):
     videos = subliminal.video.scan_videos(no_subs.keys(),
                                           subtitles=True,
                                           embedded_subtitles=False)
-    subliminal.download_best_subtitles(videos, BABELFISH_LANGUAGES, single=True)
+
+    single = True if len(BABELFISH_LANG) == 1 else False
+    subliminal.download_best_subtitles(videos, BABELFISH_LANG, single=single)
 
     still_no_subs = find_subtitles(no_subs)
     new_subs = [sub for sub in no_subs.keys() if sub not in still_no_subs.keys()]
     for subs in new_subs:
-        LOG.info("Found subs for " + subs)
+        LOG.info("Found new subs for " + subs)
     if new_subs:
-        LOG.info("{} subtitles found".format(len(new_subs)))
+        LOG.info("{} new subtitles found".format(len(new_subs)))
 
 
 media_list = list_medias(MEDIA_DIR_RECURSIVE)

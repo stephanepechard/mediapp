@@ -30,6 +30,6 @@ subliminal.cache_region.configure('dogpile.cache.dbm',
                                   arguments={'filename': '/tmp/cachefile.dbm'})
 
 # babelfish
-BABELFISH_LANGUAGES = set()
+BABELFISH_LANG = set()
 for lang in SUBS_LANGUAGES:
-    BABELFISH_LANGUAGES.add(babelfish.Language(lang))
+    BABELFISH_LANG.add(babelfish.Language(lang))

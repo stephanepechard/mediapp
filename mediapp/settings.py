@@ -7,7 +7,7 @@ MEDIA_DIR = '/home/stephane/mov'
 MEDIA_DIR_RECURSIVE = False
 
 # language representation from 3-letter code (ISO-639-3)
-SUBS_LANGUAGES = ['eng']
+SUBS_LANGUAGES = ['eng', 'fra']
 
 # default logfile name and location
 import os
