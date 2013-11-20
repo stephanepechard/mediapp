@@ -56,10 +56,10 @@ How it works
 ------------
 `Mediapp` makes use of several libraries:
 
-- `subliminal <http://subliminal.readthedocs.org/>`_ to determine and download
+- [subliminal](http://subliminal.readthedocs.org/) to determine and download
 the right subtitles ;
-- `celery <http://www.celeryproject.org/>`_ to do it asynchronously ;
-- `watchdog <http://pythonhosted.org/watchdog/>`_ to monitor file system events.
+- [celery](http://www.celeryproject.org/) to do it asynchronously ;
+- [watchdog](http://pythonhosted.org/watchdog/) to monitor file system events.
 
 
 License
