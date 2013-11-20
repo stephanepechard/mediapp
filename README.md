@@ -1,6 +1,9 @@
 Mediapp
 =======
-Mediapp automatically finds subtitles for your videos.
+`Mediapp` automatically finds subtitles for your videos.
+Downloads are triggered by file system activity, so each time you
+add, rename or remove a file in your specified media directory,
+`Mediapp` will try to find new subtitles, in the languages you want.
 
 
 Installation
@@ -61,6 +64,10 @@ the right subtitles ;
 - [celery](http://www.celeryproject.org/) to do it asynchronously ;
 - [watchdog](http://pythonhosted.org/watchdog/) to monitor file system events.
 
+
+Future works
+------------
+A static report on what movies the directory contains is on its way.
 
 License
 -------
