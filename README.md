@@ -14,9 +14,25 @@ and install dependencies through `virtualenv`:
     make
 
 
+Configuration
+-------------
+Before launching it, you can configure `Mediapp` with the dedicated file
+`settings.py`. In it, you'll find:
+
+- `MEDIA_DIR`: the directory your videos are in ;
+- `MEDIA_DIR_RECURSIVE`: to indicate if the subtitles fetching should be
+recursive or not ;
+- `SUBS_LANGUAGES`: the list of language representation
+(3-letter code, ISO-639-3) for the subtitles ;
+- `LOGFILE`: the logfile of `Mediapp`.
+
+
 Automatic launch through `supervisor`
 -------------------------------------
-A `supervisor` script is provided to do everything automatically for you. Just edit the `command`, `directory` and `user` lines (once for `mediapp_py`, once for `mediapp_celery`) to match your installation paths. Then link the file to `supervisor` configuration. On Debian, just type:
+A `supervisor` script is provided to do everything automatically for you.
+Just edit the `command`, `directory` and `user` lines (once for `mediapp_py`,
+once for `mediapp_celery`) to match your installation paths.
+Then link the file to `supervisor` configuration. On Debian, just type:
 
     sudo ln -s /etc/supervisor/conf.d/mediapp.conf supervisord.conf
 
@@ -25,7 +41,9 @@ and you're good to go after a small `supervisor` reload.
 
 Manual launch through your fingers
 ----------------------------------
-You need to launch two things: `Mediapp` itself and `celery`, both into the `virtualenv` you created during installation. To launch `Mediapp`, just type:
+You need to launch two things: `Mediapp` itself and `celery`,
+both into the `virtualenv` you created during installation.
+To launch `Mediapp`, just type:
 
     (venv) user@localhost $ ./venv/bin/python Mediapp.py
 
