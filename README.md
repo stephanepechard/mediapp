@@ -37,7 +37,7 @@ Just edit the `command`, `directory` and `user` lines (once for `mediapp_py`,
 once for `mediapp_celery`) to match your installation paths.
 Then link the file to `supervisor` configuration. On Debian, just type:
 
-    sudo ln -s /etc/supervisor/conf.d/mediapp.conf supervisord.conf
+    sudo ln -s supervisord.conf /etc/supervisor/conf.d/mediapp.conf
 
 and you're good to go after a small `supervisor` reload.
 
