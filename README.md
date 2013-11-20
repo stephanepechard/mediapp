@@ -1,6 +1,6 @@
 Mediapp
 =======
-Mediapp automatically finds subtitles for your videos. It uses 
+Mediapp automatically finds subtitles for your videos.
 
 
 Installation
@@ -50,3 +50,18 @@ To launch `Mediapp`, just type:
 To launch `celery`, just type:
 
     (venv) user@localhost $ ./venv/bin/celery -A mediapp.tasks worker
+
+
+How it works
+------------
+`Mediapp` makes use of several libraries:
+
+- `subliminal <http://subliminal.readthedocs.org/>`_ to determine and download
+the right subtitles ;
+- `celery <http://www.celeryproject.org/>`_ to do it asynchronously ;
+- `watchdog <http://pythonhosted.org/watchdog/>`_ to monitor file system events.
+
+
+License
+-------
+GPL v3
