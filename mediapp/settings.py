@@ -11,4 +11,4 @@ SUBS_LANGUAGES = ['eng', 'fra']
 
 # default logfile name and location
 import os
-LOGFILE = os.path.join(os.getcwd(), 'mediapp.log')
+LOGFILE = os.path.join(os.getcwd(), 'log_mediapp.log')
