@@ -12,14 +12,14 @@ from settings import LOGFILE, SUBS_LANGUAGES
 # logging
 def create_logger(logfile=LOGFILE):
     log = logging.getLogger("mediapp")
-    log.setLevel(logging.DEBUG)
+    log.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
     file_handler = RotatingFileHandler(logfile, 'a', 1000000, 1)
-    file_handler.setLevel(logging.DEBUG)
+    file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)
     log.addHandler(file_handler)
     steam_handler = logging.StreamHandler()
-    steam_handler.setLevel(logging.DEBUG)
+    steam_handler.setLevel(logging.INFO)
     log.addHandler(steam_handler)
     return(log)
 LOG = create_logger()
