@@ -13,4 +13,4 @@ class Report(object):
 
 
     def write(self):
-
+        pass
