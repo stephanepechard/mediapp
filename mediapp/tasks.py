@@ -6,14 +6,14 @@ import time
 from celery import Celery
 import redis
 # local
-from celeryconfig import REDIS_HOST, REDIS_PORT
+from celeryconf import REDIS_HOST, REDIS_PORT
 from conf import LOG
 from fetcher import Fetcher
 
 
 # celery
 celery = Celery('mediapp')
-celery.config_from_object('mediapp.celeryconfig')
+celery.config_from_object('mediapp.celeryconf')
 # redis
 redis_db = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=0)
 LOCK_EXPIRE = 60 # Lock expires in 1 minute
