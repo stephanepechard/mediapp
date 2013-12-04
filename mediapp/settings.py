@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # directory where media are located
-MEDIA_DIR = '/home/stephane/mov'
+MEDIA_DIR = '/home/stephane/.rtorrent/done'
 
 # should we look recursively?
 MEDIA_DIR_RECURSIVE = False
