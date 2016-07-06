@@ -4,12 +4,12 @@
 import os
 # pipped
 import subliminal
-from subliminal.video import scan_videos
+from subliminal import scan_videos
 # libs
-import libs.kaa_metadata as kaa_metadata
+import mediapp.libs.kaa_metadata as kaa_metadata
 # local
-from conf import LOG, BABELFISH_LANG, pluralize
-from settings import MEDIA_DIR, MEDIA_DIR_RECURSIVE
+from .conf import LOG, BABELFISH_LANG, pluralize
+from .settings import MEDIA_DIR, MEDIA_DIR_RECURSIVE
 
 
 class Fetcher(object):

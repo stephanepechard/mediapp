@@ -6,9 +6,9 @@ import time
 from celery import Celery
 import redis
 # local
-from celeryconf import REDIS_HOST, REDIS_PORT
-from conf import LOG
-from fetcher import Fetcher
+from .celeryconf import REDIS_HOST, REDIS_PORT
+from .conf import LOG
+from .fetcher import Fetcher
 
 
 # celery

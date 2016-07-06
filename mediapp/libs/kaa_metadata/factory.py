@@ -318,7 +318,7 @@ class _Factory:
         if os.path.isfile(filename):
             try:
                 f = File(filename,'rb')
-            except (IOError, OSError), e:
+            except (IOError, OSError) as e:
                 log.info('error reading %s: %s' % (filename, e))
                 return None
             r = self.create_from_file(f, force)

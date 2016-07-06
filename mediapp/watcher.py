@@ -8,9 +8,9 @@ import psutil
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 # local
-from conf import LOG
-from settings import MEDIA_DIR, MEDIA_DIR_RECURSIVE
-from tasks import fetch_subs
+from .conf import LOG
+from .settings import MEDIA_DIR, MEDIA_DIR_RECURSIVE
+from .tasks import fetch_subs
 
 
 class MediappEventHandler(FileSystemEventHandler):
@@ -45,6 +45,7 @@ class MediappWatcher(object):
 
 
     def check_celery(self):
+        return
         PROC_NAME = 'celery'
         PROC_ARG = 'mediapp.tasks'
 

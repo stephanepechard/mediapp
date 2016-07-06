@@ -7,7 +7,7 @@ from logging.handlers import RotatingFileHandler
 import subliminal
 import babelfish
 # local
-from settings import LOGFILE, SUBS_LANGUAGES
+from .settings import LOGFILE, SUBS_LANGUAGES
 
 # logging
 def create_logger(logfile=LOGFILE):
@@ -26,8 +26,8 @@ LOG = create_logger()
 
 
 # configure the cache for subliminal
-subliminal.cache_region.configure('dogpile.cache.dbm',
-                                  arguments={'filename': '/tmp/cachefile.dbm'})
+#subliminal.cache_region.configure('dogpile.cache.dbm',
+#                                  arguments={'filename': '/tmp/cachefile.dbm'})
 
 
 # babelfish
