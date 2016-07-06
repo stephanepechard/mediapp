@@ -9,6 +9,7 @@ import redis
 from .celeryconf import REDIS_HOST, REDIS_PORT
 from .conf import LOG
 from .fetcher import Fetcher
+from .report import Report
 
 
 # celery
@@ -31,13 +32,17 @@ def fetch_subs():
         redis_db.setex(lock_id, LOCK_EXPIRE, True)
 
         # fetch subtitles
-        new_fetcher = Fetcher()
-        new_fetcher.fetch_all_subtitles()
+        fetcher = Fetcher()
+        fetcher.fetch_all_subtitles()
+        # update report
+        media_list = fetcher.media_list
+        report = Report(media_list)
+        report.write()
     else:
         LOG.debug('Too many tasks, this one is not triggered!')
 
 
 @celery.task
 def fetch_sub(media_path):
-    new_fetcher = Fetcher()
-    new_fetcher.fetch_subtitles([media_path])
+    fetcher = Fetcher()
+    fetcher.fetch_subtitles([media_path])

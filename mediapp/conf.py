@@ -42,5 +42,3 @@ def pluralize(container):
     if len(container) == 1:
         plural = ''
     return(plural)
-
-#import ipdb;ipdb.set_trace()

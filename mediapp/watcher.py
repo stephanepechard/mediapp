@@ -2,6 +2,7 @@
 
 # system
 import os
+import sys
 import time
 # pipped
 import psutil
@@ -26,14 +27,20 @@ class MediappWatcher(object):
 
     def start(self):
         event_handler = MediappEventHandler()
-        self.observer.schedule(event_handler, path=MEDIA_DIR, recursive=MEDIA_DIR_RECURSIVE)
+        try:
+            self.observer.schedule(event_handler, path=MEDIA_DIR,
+                                   recursive=MEDIA_DIR_RECURSIVE)
+        except OSError:
+            LOG.error("Directory {} does not exist!".format(MEDIA_DIR))
+            sys.exit()
 
         LOG.info("Start watching {}".format(MEDIA_DIR))
         self.observer.start()
         try:
             while True:
                 self.check_celery()
-                time.sleep(10) # arbitrary value, to trigger check_celery() not to often
+                # arbitrary value, to trigger check_celery() not too often
+                time.sleep(10)
         except KeyboardInterrupt:
             self.stop()
 
@@ -55,8 +62,7 @@ class MediappWatcher(object):
 
         mediapp_proc = psutil.Process(os.getpid())
         celery_path = os.path.join(os.path.dirname(mediapp_proc.exe), PROC_NAME)
-        command = '{} -A mediapp.tasks worker'.format(celery_path)
         LOG.warn("Celery does not seem to be running, please start it using:")
-        LOG.warn(command)
+        LOG.warn('{} -A mediapp.tasks worker'.format(celery_path))
         LOG.warn("Or using supervisor, see Mediapp's help for instructions.")
 
